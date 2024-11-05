@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Bond</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #1abc9c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #34495e;
+            overflow: hidden;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #16a085;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #2c3e50;
+        }
+
+        .content-box {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #34495e;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .button {
+            background-color: #1abc9c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #16a085;
+        }
+
+        .chat-box {
+            background-color: #ecf0f1;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .chat-message {
+            margin: 10px 0;
+        }
+
+        .message-sender {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .message-text {
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .message-input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .send-button {
+            background-color: #1abc9c;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .send-button:hover {
+            background-color: #16a085;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Golden Bond</h1>
+    <p>Connecting Juniors and Seniors for Career Guidance and Motivation</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#career-guidance">Career Guidance</a>
+    <a href="#motivation">Motivation</a>
+    <a href="#interaction">Interaction</a>
+</nav>
+
+<div id="home" class="container">
+    <section>
+        <h2 class="section-title">Welcome to Golden Bond</h2>
+        <p>Golden Bond is a platform that connects juniors with seniors from the same university for career guidance, motivation, and interaction. Whether you're looking for career advice, networking opportunities, or just some motivation to get through the tough times, you've come to the right place!</p>
+    </section>
+</div>
+
+<div id="career-guidance" class="container">
+    <section>
+        <h2 class="section-title">Career Guidance</h2>
+        <div class="content-box">
+            <h3>Essential Career Resources</h3>
+            <ul>
+                <li><a href="#">How to Write a Winning Resume</a></li>
+                <li><a href="#">Preparing for Job Interviews</a></li>
+                <li><a href="#">LinkedIn Profile Optimization</a></li>
+                <li><a href="#">Effective Networking Tips</a></li>
+                <li><a href="#">Building a Strong Portfolio</a></li>
+            </ul>
+            <p>Browse through our hand-picked resources to enhance your career prospects. Take advantage of these tools and build a successful future!</p>
+        </div>
+    </section>
+</div>
+
+<div id="motivation" class="container">
+    <section>
+        <h2 class="section-title">Motivation</h2>
+        <div class="content-box">
+            <h3>Inspirational Quotes</h3>
+            <blockquote>
+                <p>"The only way to do great work is to love what you do." - Steve Jobs</p>
+            </blockquote>
+            <blockquote>
+                <p>"Success is not the key to happiness. Happiness is the key to success." - Albert Schweitzer</p>
+            </blockquote>
+            <p>Stay motivated and focused on your goals. The journey to success is hard, but with determination, you will achieve your dreams.</p>
+        </div>
+    </section>
+</div>
+
+<div id="interaction" class="container">
+    <section>
+        <h2 class="section-title">Interaction with Seniors</h2>
+        <div class="content-box">
+            <h3>Chat with Seniors</h3>
+            <div class="chat-box" id="chatBox">
+                <div class="chat-message">
+                    <div class="message-sender">Senior 1</div>
+                    <div class="message-text">Hey Junior, focus on internships to build practical skills. It helps a lot!</div>
+                </div>
+                <div class="chat-message">
+                    <div class="message-sender">Senior 2</div>
+                    <div class="message-text">Don't forget to network! Connections can open doors to new opportunities.</div>
+                </div>
+            </div>
+            <textarea class="message-input" id="messageInput" rows="4" placeholder="Type your message..."></textarea>
+            <button class="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 Golden Bond. All rights reserved.</p>
+</footer>
+
+<script>
+    // Function to handle sending messages
+    function sendMessage() {
+        let messageInput = document.getElementById("messageInput");
+        let message = messageInput.value.trim();
+        if (message) {
+            let chatBox = document.getElementById("chatBox");
+            let newMessage = document.createElement("div");
+            newMessage.classList.add("chat-message");
+
+            let sender = document.createElement("div");
+            sender.classList.add("message-sender");
+            sender.textContent = "Junior: ";
+
+            let text = document.createElement("div");
+            text.classList.add("message-text");
+            text.textContent = message;
+
+            newMessage.appendChild(sender);
+            newMessage.appendChild(text);
+
+            chatBox.appendChild(newMessage);
+            messageInput.value = ''; // clear input field after sending
+        }
+    }
+</script>
+
+</body>
+</html>
